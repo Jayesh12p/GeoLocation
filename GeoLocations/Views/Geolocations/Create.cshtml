@@ -1,0 +1,124 @@
+﻿@model GeoLocations.Models.Geolocation
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "Geolocations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Geolocation</h4>
+    @*<input type="button" onclick='getLocation()' value="click here to get coordinates" class="btn btn-primary" />*@
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Engineer, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control selectpicker" data-live-search="true" name="Engineer">
+                <option value="Engineer 1">Engineer 1</option>
+                <option value="Engineer 2">Engineer 2</option>
+                <option value="Engineer 3">Engineer 3</option>
+                <option value="Engineer 4">Engineer 4</option>
+                <option value="Engineer 5">Engineer 5</option>
+                <option value="Engineer 6">Engineer 6</option>
+                <option value="Engineer 7">Engineer 7</option>
+                <option value="Engineer 8">Engineer 8</option>
+                <option value="Engineer 9">Engineer 9</option>
+                <option value="Engineer 10">Engineer 10</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Engineer, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <script>
+        function getLocation() {
+            var x = document.getElementById("demo");
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, handleLocationError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var accuracy = position.coords.accuracy;
+
+            // Update the hidden input fields with the geolocation data
+            document.getElementById("Latitude").value = latitude;
+            document.getElementById("Longitude").value = longitude;
+            document.getElementById("Accuracy").value = accuracy;
+
+
+
+            // Submit the form
+            document.forms["Geolocations"].submit();
+        }
+        function handleLocationError(error) {
+            if (error.code === error.PERMISSION_DENIED) {
+                x.innerHTML = "User denied the Geolocation request.";
+
+                // Display a custom message or take appropriate action
+                alert("Please allow access to your location.");
+            } else {
+                x.innerHTML = "Error retrieving geolocation data.";
+            }
+        }
+
+
+    </script>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*<input type="file" name="EPhoto" class="form-control" />*@
+            <input type="file" onclick="getLocation()" name="EPhoto" class="form-control" accept="image/*" />
+            @Html.ValidationMessageFor(model => model.EPhoto, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*<input type="hidden" id="Latitude" name="Latitude" value="" />
+        <input type="hidden" id="Longitude" name="Longitude" value="" />
+        <input type="hidden" id="Accuracy" name="Accuracy" value="" />*@
+
+        @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id = "Latitude" } })
+        @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+
+        @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id = "Longitude" } })
+        @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+
+        @Html.EditorFor(model => model.Accuracy, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id = "Accuracy" } })
+        @Html.ValidationMessageFor(model => model.Accuracy, "", new { @class = "text-danger" })
+
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+ 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
