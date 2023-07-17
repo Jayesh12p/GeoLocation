@@ -25,6 +25,7 @@ namespace GeoLocations.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Engineer> Engineers { get; set; }
         public virtual DbSet<Geolocation> Geolocations { get; set; }
     }
 }

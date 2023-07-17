@@ -5,7 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="aa5bf92377c04d748fbcecbbd6e57129" Name="Diagram1">
-        <EntityTypeShape EntityType="MyGeoLocationModel.Geolocation" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MyGeoLocationModel.Engineer" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="MyGeoLocationModel.Geolocation" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="MyGeoLocationModel.FK_Geolocations_Engineer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

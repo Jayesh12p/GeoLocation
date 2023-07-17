@@ -13,22 +13,20 @@ namespace GeoLocations.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
-    using System.Web.UI.HtmlControls;
-    using WebGrease.Configuration;
 
     public partial class Geolocation
     {
         public decimal Id { get; set; }
-        public string Engineer { get; set; }
-        [Required(ErrorMessage = "Enable your location")]
+        public Nullable<decimal> Engineer { get; set; }
+        [Required]
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Accuracy { get; set; }
         public string Equipments { get; set; }
         public Nullable<System.DateTime> CurrentDate { get; set; }
         public Nullable<System.TimeSpan> CurrentTime { get; set; }
-
-        [Required(ErrorMessage = "Select Image")]
+        [Required]
         public HttpPostedFileBase EPhoto { get; set; }
+        public virtual Engineer Engineer1 { get; set; }
     }
 }

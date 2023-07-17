@@ -130,10 +130,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EngineersController.cs" />
     <Compile Include="Controllers\GeolocationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Engineer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Geolocation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -228,6 +232,11 @@
     <Content Include="Views\Geolocations\Details.cshtml" />
     <Content Include="Views\Geolocations\Edit.cshtml" />
     <Content Include="Views\Geolocations\Index.cshtml" />
+    <Content Include="Views\Engineers\Create.cshtml" />
+    <Content Include="Views\Engineers\Delete.cshtml" />
+    <Content Include="Views\Engineers\Details.cshtml" />
+    <Content Include="Views\Engineers\Edit.cshtml" />
+    <Content Include="Views\Engineers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
