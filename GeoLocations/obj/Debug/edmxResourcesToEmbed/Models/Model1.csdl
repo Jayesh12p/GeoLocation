@@ -16,8 +16,8 @@
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Geolocations" Relationship="MyGeoLocationModel.FK_Geolocations_Engineer" FromRole="Engineer" ToRole="Geolocation" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Geolocations" Relationship="MyGeoLocationModel.FK_Geolocations_Engineer" FromRole="Engineer" ToRole="Geolocation" />
   </EntityType>
   <EntityType Name="Geolocation">
     <Key>

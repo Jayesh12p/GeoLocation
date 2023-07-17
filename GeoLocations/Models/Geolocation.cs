@@ -11,21 +11,18 @@ namespace GeoLocations.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.Web;
 
     public partial class Geolocation
     {
         public decimal Id { get; set; }
         public Nullable<decimal> Engineer { get; set; }
-        [Required]
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Accuracy { get; set; }
         public string Equipments { get; set; }
         public Nullable<System.DateTime> CurrentDate { get; set; }
         public Nullable<System.TimeSpan> CurrentTime { get; set; }
-        [Required]
         public HttpPostedFileBase EPhoto { get; set; }
         public virtual Engineer Engineer1 { get; set; }
     }

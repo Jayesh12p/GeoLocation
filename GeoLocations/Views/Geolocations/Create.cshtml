@@ -24,20 +24,8 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Engineer, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                <select class="form-control selectpicker" data-live-search="true" name="Engineer">
-                                    <option value="Engineer 1">Engineer 1</option>
-                                    <option value="Engineer 2">Engineer 2</option>
-                                    <option value="Engineer 3">Engineer 3</option>
-                                    <option value="Engineer 4">Engineer 4</option> 
-
-
-                                    <option value="Engineer 5">Engineer 5</option>
-                                    <option value="Engineer 6">Engineer 6</option>
-                                    <option value="Engineer 7">Engineer 7</option>
-                                    <option value="Engineer 8">Engineer 8</option>
-                                    <option value="Engineer 9">Engineer 9</option>
-                                    <option value="Engineer 10">Engineer 10</option>
-                                </select>
+                                
+                                @Html.DropDownList("Engineer", null, htmlAttributes: new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Engineer, "", new { @class = "text-danger" })
                             </div>
                         </div>

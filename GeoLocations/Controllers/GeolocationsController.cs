@@ -16,13 +16,14 @@ namespace GeoLocations.Controllers
     public class GeolocationsController : Controller
     {
         private MyGeoLocationEntities4 db = new MyGeoLocationEntities4();
-
+        
 
          
 
         // GET: Geolocations
         public ActionResult Index()
         {
+            var geolocations = db.Geolocations.Include(g => g.Engineer1);
             return View(db.Geolocations.ToList());
         }
 
@@ -44,6 +45,7 @@ namespace GeoLocations.Controllers
         // GET: Geolocations/Create
         public ActionResult Create()
         {
+            ViewBag.Engineer = new SelectList(db.Engineers, "Id", "Name");
             return View();
         }
 
@@ -58,7 +60,7 @@ namespace GeoLocations.Controllers
 
             if (ModelState.IsValid)
             {
-                
+
                 geolocation.CurrentDate = DateTime.Now.Date;
                 geolocation.CurrentTime = DateTime.Now.TimeOfDay;
                 db.Geolocations.Add(geolocation);
@@ -85,6 +87,7 @@ namespace GeoLocations.Controllers
             }
             
 
+            ViewBag.Engineer = new SelectList(db.Engineers, "Id", "Name", geolocation.Engineer);
             return View(geolocation);
         }
 
@@ -100,6 +103,7 @@ namespace GeoLocations.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Engineer = new SelectList(db.Engineers, "Id", "Name", geolocation.Engineer);
             return View(geolocation);
         }
 
@@ -118,6 +122,7 @@ namespace GeoLocations.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Engineer = new SelectList(db.Engineers, "Id", "Name", geolocation.Engineer);
             return View(geolocation);
         }
 
